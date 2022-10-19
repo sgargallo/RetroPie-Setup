@@ -316,6 +316,23 @@ function configure_emulationstation() {
     addAutoConf "disable" 0
 }
 
+function swap_emulationstation() {
+    local es_swap=0
+    getAutoConf "es_swap_a_b" && es_swap=1
+    
+    local disable=0
+    getAutoConf "disable" && disable=1
+    
+    local default
+    local options
+
+    es_swap="$((es_swap ^ 1))"
+    setAutoConf "es_swap_a_b" "$es_swap"
+    local ra_swap="false"
+    getAutoConf "es_swap_a_b" && ra_swap="true"
+    iniSet "menu_swap_ok_cancel_buttons" "$ra_swap" "$configdir/all/retroarch.cfg"
+}
+
 function gui_emulationstation() {
     local es_swap=0
     getAutoConf "es_swap_a_b" && es_swap=1
