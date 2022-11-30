@@ -71,7 +71,7 @@ function configure_hypseus() {
 
     ln -sf "$md_conf_root/daphne/hypinput.ini" "$md_inst/hypinput.ini"
 
-    local common_args="-framefile \"\$dir/\$name.txt\" -homedir \"$md_inst\" -fullscreen \$params"
+    local common_args="-framefile \"\$dir/\$name.txt\" -homedir \"$md_inst\" -fullscreen -scanlines -scanline_alpha 128 \$params"
 
     cat >"$md_inst/hypseus.sh" <<_EOF_
 #!/bin/bash
